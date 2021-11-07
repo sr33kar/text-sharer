@@ -1,0 +1,99 @@
+
+@font-face {
+  font-family: "heading-font";
+  src: url("./fonts/BEBASNEUE-REGULAR.TTF");
+}
+@font-face {
+  font-family: "text";
+  /*src: url("./fonts/KURALE-REGULAR.TTF");*/
+  src: url("./fonts/SITKA.TTC");
+}
+.Home{
+    padding-top: 5vh;
+    background-color: rgb(160, 145, 245);
+    height: 110vh;
+    width: 90vw;
+    transform: translate(5vw, -50px);
+    color: white;
+    background-image: linear-gradient(180deg, rgb(225, 0, 255), rgb(95, 239, 255));
+  }
+
+  .url-label, .url-input,.error-label, .text-label, .textbox {
+    margin-top: 20px;
+    font-size: large;
+    font-family: "text";
+  }
+  .error-label{
+    background-color: rgb(255, 182, 182);
+    border-color: rgb(255, 103, 103);
+    color: black;
+    padding: 5px 5px 5px 5px;
+    border-style: solid;
+    border-radius: 5px;
+  }
+  .url-input{
+    background-color: inherit;
+    border-bottom: 2px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: white;
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 0.5; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+    opacity: 0.5; /* Firefox */
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+    opacity: 0.5; /* Firefox */
+  }
+  .url-input:focus, .textbox:focus{
+    outline: none;
+  }
+
+.textbox{
+  height: 50vh;
+  width: 70vw;
+  border-radius: 5px;
+  padding: 10px;
+  color: black;
+}
+textarea::placeholder{
+  color: black;
+}
+.headers{
+  font-family: "text";
+  font-size: 50px;
+}
+
+.button, .deleteButton{
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: "text";
+}
+
+.deleteButton{
+  background-color: rgb(255, 129, 129);
+}
+
+.icon{
+  display: inline;
+  width: 20px;
+  filter: invert(1);
+  cursor: pointer;
+  color: white;
+}
+img{
+  display: inline;
+}
