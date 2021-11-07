@@ -55,6 +55,16 @@ import services from '../services/services';
                     <br></br><textarea className="textbox" value={this.state.data} onChange={this.handleOnChangeTextarea} placeholder="Copy your text here!!" ></textarea><br></br>
                     <button className="button" onClick={this.onSubmit} >Submit!</button>
                 </form>
+                <br></br>
+                <div className="guide">
+                    <h4>How to Use:</h4>
+                    <ol>
+                        <li>Enter the data you wish to share in the textbox.</li>
+                        <li>Enter the URL you wish to have, replace "example" with "your-url".</li>
+                        <li>Press submit and share the url:</li>
+                        https://text-sharer.netlify.com/&lt;your-url&gt;
+                    </ol>
+                </div>
             </div>
          );
      }

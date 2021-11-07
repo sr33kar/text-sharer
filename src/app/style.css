@@ -10,8 +10,9 @@
 }
 .Home{
     padding-top: 5vh;
+    padding-bottom: 5vh;
     background-color: rgb(160, 145, 245);
-    height: 110vh;
+    height: 120%;
     width: 90vw;
     transform: translate(5vw, -50px);
     color: white;
@@ -55,9 +56,6 @@
     color: white;
     opacity: 0.5; /* Firefox */
   }
-  .url-input:focus, .textbox:focus{
-    outline: none;
-  }
 
 .textbox{
   height: 50vh;
@@ -71,7 +69,7 @@ textarea::placeholder{
 }
 .headers{
   font-family: "text";
-  font-size: 50px;
+  font-size: 5vh;
 }
 
 .button, .deleteButton{
@@ -96,4 +94,13 @@ textarea::placeholder{
 }
 img{
   display: inline;
+}
+
+.guide{
+  text-align: left;
+  color: black;
+  background-color: rgb(255, 255, 255);
+  padding: 5px 5px 5px 5px;
+  font-size: medium;
+  border-radius: 5px;
 }
