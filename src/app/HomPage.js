@@ -47,8 +47,7 @@ import services from '../services/services';
             <div>
                 <h2 className="headers">Text-Sharer</h2>
                 <form className="form">
-                    <label className="url-label">URL: text-sharer.com/</label>
-                    <input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="example" /><br></br>
+                    <label className="url-label">URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="example" /><br></br>
                     {
                         this.state.alreadyTaken ? <div><br></br><label className="error-label">URL already taken. </label></div>: ""
                     }
