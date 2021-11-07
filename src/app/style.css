@@ -10,9 +10,8 @@
 }
 .Home{
     padding-top: 5vh;
-    padding-bottom: 5vh;
     background-color: rgb(160, 145, 245);
-    height: 120%;
+    height: 110vh;
     width: 90vw;
     transform: translate(5vw, -50px);
     color: white;
@@ -56,6 +55,9 @@
     color: white;
     opacity: 0.5; /* Firefox */
   }
+  .url-input:focus, .textbox:focus{
+    outline: none;
+  }
 
 .textbox{
   height: 50vh;
@@ -96,6 +98,7 @@ img{
   display: inline;
 }
 
+
 .guide{
   text-align: left;
   color: black;
@@ -103,4 +106,14 @@ img{
   padding: 5px 5px 5px 5px;
   font-size: medium;
   border-radius: 5px;
+}
+
+input{
+  border-bottom: 2px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: white;
 }
