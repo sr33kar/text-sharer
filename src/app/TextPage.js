@@ -81,7 +81,7 @@ import ReactLoading from 'react-loading';
             <div>
                 <h2 className="headers">Text-Sharer</h2>
                 <form className="form">
-                    <label className="url-label">URL: text-sharer.netlify.com/{this.props.url}</label>
+                    <label className="url-label">Custom URL: text-sharer.netlify.com/{this.props.url}</label>
                     <div className="icon" onClick={() => {this.copyURLToClipboard(); this.setState({urlCopied: true, dataCopied:false})}}>
                         &nbsp;&nbsp;&nbsp;&nbsp;<img src={copyImage} width="20px" /> {this.state.urlCopied? "Copied!": ''}
                     </div>

@@ -62,7 +62,7 @@ import ReactLoading from 'react-loading';
             <div>
                 <h2 className="headers">Text-Sharer</h2>
                 <form className="form">
-                    <label className="url-label">URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="example" /><br></br>
+                    <label className="url-label">Custom URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="example" /><br></br>
                     <Modal show={this.state.alreadyTaken} onHide={()=>this.handleAlreadyTakenModal()}>  
                         <Modal.Header closeButton>Already Taken :(</Modal.Header>  
                         <Modal.Body>This URL is already taken. Please retry with other URL.</Modal.Body>  
