@@ -1,6 +1,8 @@
 import react, { Component } from 'react';
 import copyImage from "./assets/copy.png";
 import services from '../services/services';
+import { Button,Modal} from 'react-bootstrap';
+import ReactLoading from 'react-loading';
  class TextPage extends Component{
      constructor(props){
          super(props);
@@ -8,7 +10,9 @@ import services from '../services/services';
             url: this.props.url,
             data: "",
             urlCopied:false,
-            dataCopied:false
+            dataCopied:false,
+            loading: false,
+            deleting: false
         };
         services.get(this.state.url).then(
             (response) =>{
@@ -31,8 +35,10 @@ import services from '../services/services';
     }
     onSubmit = (e) =>{
         e.preventDefault();
+        this.setState({loading: true});
         services.update(this.state).then(
             (res)=>{
+                this.setState({loading: false});
                 if(res.status === 200){
                     window.location.href = window.location.href;
                 }
@@ -41,8 +47,10 @@ import services from '../services/services';
      }
      onDelete = (e) =>{
          e.preventDefault();
+         this.setState({deleting: true});
          services.delete(this.state.url).then(
              (res)=>{
+                 this.setState({deleting: false})
                  if(res.status===200){
                     var currURL = window.location.href;
                     window.location.href = currURL.substr(0, currURL.length - this.state.url.length);
@@ -85,7 +93,7 @@ import services from '../services/services';
                     <button className="button" onClick={(e) => {e.preventDefault();this.copyDataToClipboard(); this.setState({dataCopied: true, urlCopied:false})}}>
                         <img src={copyImage} width="10px" /> {this.state.dataCopied? "Copied!": 'Copy!'}
                     </button>&nbsp;
-                    <button className="button" onClick={this.onSubmit}>Update!</button> <button className="deleteButton" onClick={this.onDelete}>Delete me!</button>
+                    <button className="button" onClick={this.onSubmit} disabled={this.state.loading}>{this.state.loading? <ReactLoading type="bubbles" color="black" height={'30px'} width={'50px'} />: 'Update!'}</button> <button className="deleteButton" onClick={this.onDelete} disabled={this.state.deleting}>{this.state.deleting? <ReactLoading type="bubbles" color="black" />: 'Delete me!'}</button>
                 </form>
             </div>
          );

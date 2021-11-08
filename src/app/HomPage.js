@@ -1,18 +1,28 @@
 
 import react, { Component } from 'react';
 import services from '../services/services';
+import { Button,Modal} from 'react-bootstrap';
+import ReactLoading from 'react-loading';
  class HomePage extends Component{
      constructor(props){
          super(props);
          this.state = {
              url: "",
              data: "",
-             alreadyTaken: false
+             alreadyTaken: false,
+             urlEmpty: false,
+             loading: false
          };
          this.handleOnChangeTextarea = this.handleOnChangeTextarea.bind(this);
          this.handleOnChangeUrl = this.handleOnChangeUrl.bind(this);
          this.onSubmit = this.onSubmit.bind(this);
      }
+     handleAlreadyTakenModal(){  
+        this.setState({alreadyTaken:!this.state.alreadyTaken})  
+      } 
+      handleURLEmptyModal(){
+          this.setState({urlEmpty: !this.state.urlEmpty})
+      }
      handleOnChangeTextarea = (e) =>{
          this.setState({
              data: e.target.value
@@ -26,21 +36,26 @@ import services from '../services/services';
      }
      onSubmit = (e) =>{
         e.preventDefault();
-        services.get(this.state.url).then(
-            (response)=>{
-            console.log(response);
-                if(response.data && response.data._id.length > 0){
-                    this.setState({alreadyTaken: true});
+        if(this.state.url.length === 0){
+            this.setState({urlEmpty: true, alreadyTaken:false})
+        }else{
+            this.setState({urlEmpty: false, loading: true});
+            services.get(this.state.url).then(
+                (response)=>{
+                console.log(response);
+                    if(response.data && response.data._id.length > 0){
+                        this.setState({alreadyTaken: true, loading: false});
+                    }
+                    else{
+                        services.create(this.state).then(
+                            (response) =>{
+                                window.location.href = window.location.href + this.state.url;
+                            }
+                        );
+                    }
                 }
-                else{
-                    services.create(this.state).then(
-                        (response) =>{
-                            window.location.href = window.location.href + this.state.url;
-                        }
-                    );
-                }
-            }
-        );
+            );
+        }
      }
      render() {
          return (
@@ -48,11 +63,17 @@ import services from '../services/services';
                 <h2 className="headers">Text-Sharer</h2>
                 <form className="form">
                     <label className="url-label">URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="example" /><br></br>
-                    {
-                        this.state.alreadyTaken ? <div><br></br><label className="error-label">URL already taken. </label></div>: ""
-                    }
+                    <Modal show={this.state.alreadyTaken} onHide={()=>this.handleAlreadyTakenModal()}>  
+                        <Modal.Header closeButton>Already Taken :(</Modal.Header>  
+                        <Modal.Body>This URL is already taken. Please retry with other URL.</Modal.Body>  
+                    </Modal>  
+                    <Modal show={this.state.urlEmpty} onHide={()=>this.handleURLEmptyModal()}>  
+                        <Modal.Header closeButton>Empty URL</Modal.Header>  
+                        <Modal.Body>Please enter the custom URL.</Modal.Body>  
+                    </Modal>
                     <br></br><textarea className="textbox" value={this.state.data} onChange={this.handleOnChangeTextarea} placeholder="Copy your text here!!" ></textarea><br></br>
-                    <button className="button" onClick={this.onSubmit} >Submit!</button>
+                    <button className="button" onClick={this.onSubmit} disabled={this.state.loading}>{this.state.loading? <ReactLoading type="bubbles" color="black" />: 'Submit!'}</button>
+                   
                 </form>
                 <br></br>
                 <div className="guide">
