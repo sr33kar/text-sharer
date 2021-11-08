@@ -11,7 +11,8 @@ import ReactLoading from 'react-loading';
              data: "",
              alreadyTaken: false,
              urlEmpty: false,
-             loading: false
+             loading: false,
+             hasSlash: false
          };
          this.handleOnChangeTextarea = this.handleOnChangeTextarea.bind(this);
          this.handleOnChangeUrl = this.handleOnChangeUrl.bind(this);
@@ -29,6 +30,12 @@ import ReactLoading from 'react-loading';
          });
      }
      handleOnChangeUrl = (e) =>{
+         if(e.target.value.includes('/')){
+             this.setState({hasSlash: true});
+         }
+         else{
+             this.setState({hasSlash: false});
+         }
          this.setState({
              url: e.target.value
          });
@@ -62,7 +69,10 @@ import ReactLoading from 'react-loading';
             <div>
                 <h2 className="headers">Text-Sharer</h2>
                 <form className="form">
-                    <label className="url-label">Custom URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="example" /><br></br>
+                    <label className="url-label">Custom URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="->example" /><br></br>
+                    {
+                        this.state.hasSlash? <label className="error-label">'/' are not allowed in the URL.</label> : ''
+                    }
                     <Modal show={this.state.alreadyTaken} onHide={()=>this.handleAlreadyTakenModal()}>  
                         <Modal.Header closeButton>Already Taken :(</Modal.Header>  
                         <Modal.Body>This URL is already taken. Please retry with other URL.</Modal.Body>  
@@ -72,7 +82,7 @@ import ReactLoading from 'react-loading';
                         <Modal.Body>Please enter the custom URL.</Modal.Body>  
                     </Modal>
                     <br></br><textarea className="textbox" value={this.state.data} onChange={this.handleOnChangeTextarea} placeholder="Copy your text here!!" ></textarea><br></br>
-                    <button className="button" onClick={this.onSubmit} disabled={this.state.loading}>{this.state.loading? <ReactLoading type="bubbles" color="black" />: 'Submit!'}</button>
+                    <button className="button" onClick={this.onSubmit} disabled={this.state.loading || this.state.hasSlash}>{this.state.loading? <ReactLoading type="bubbles" color="black" />: 'Submit!'}</button>
                    
                 </form>
                 <br></br>
