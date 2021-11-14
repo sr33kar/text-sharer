@@ -70,7 +70,7 @@ import ReactLoading from 'react-loading';
                 <h2 className="headers">Text-Sharer</h2>
                 <p className="para">Online Text Sharing App without login and no long URLs.</p>
                 <form className="form">
-                    <label className="url-label">Custom URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="->example" /><br></br>
+                    <label className="url-label">Custom URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="->example" required="true" /><br></br>
                     {
                         this.state.hasSlash? <label className="error-label">'/' are not allowed in the URL.</label> : ''
                     }
