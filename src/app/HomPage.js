@@ -1,6 +1,6 @@
 
 import react, { Component } from 'react';
-import services from '../services/services';
+import services from '../services/services.js';
 import { Button,Modal} from 'react-bootstrap';
 import ReactLoading from 'react-loading';
  class HomePage extends Component{
