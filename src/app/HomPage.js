@@ -67,6 +67,17 @@ import ReactLoading from 'react-loading';
      render() {
          return (
             <div>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5754190689867714"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5754190689867714"
+                    data-ad-slot="4457950379"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
                 <h2 className="headers">Text-Sharer</h2>
                 <p className="para">Online Text Sharing App without login and no long URLs.</p>
                 <form className="form">
