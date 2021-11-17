@@ -36,9 +36,7 @@
   }
   .url-input{
     background-color: inherit;
-    border-bottom: 2px;
-    border-color: rgb(255, 255, 255);
-    border-style: solid;
+    border-color: white;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -116,12 +114,6 @@ img{
 }
 
 input{
-  border-bottom: 2px;
-    border-color: rgb(255, 255, 255);
-    border-style: solid;
-    border-top: none;
-    border-left: none;
-    border-right: none;
     color: white;
 }
 
