@@ -66,7 +66,7 @@ import ReactLoading from 'react-loading';
      }
      render() {
          return (
-            <div>
+            <div className="homePage">
                 
                 <h2 className="headers">Text-Sharer</h2>
                 <p className="para">Online Text Sharing App without login and no long URLs.</p>
