@@ -117,6 +117,27 @@ input{
     color: white;
 }
 
+.footer{
+  background-color: blueviolet;
+  padding-top: 20px;
+  padding-bottom: 20px;
+   text-align: center;
+   align-items: center;
+   color: white;
+}
+.link{
+  color: white;
+}
+ .logo{
+   width: 40px;
+   height: 40px;
+   padding: 10px 10px 10px 10px;
+ }
+
+ .privacy_policy{
+   text-align: left;
+   padding: 30px 30px 30px 30px;
+ }
 @media screen and (max-width: 480px) {
   .Home, .homePage{
     width: 100%;

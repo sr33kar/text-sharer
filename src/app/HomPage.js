@@ -3,6 +3,7 @@ import react, { Component } from 'react';
 import services from '../services/services';
 import { Button,Modal} from 'react-bootstrap';
 import ReactLoading from 'react-loading';
+import Footer  from './Footer';
  class HomePage extends Component{
      constructor(props){
          super(props);
@@ -45,7 +46,13 @@ import ReactLoading from 'react-loading';
         e.preventDefault();
         if(this.state.url.length === 0){
             this.setState({urlEmpty: true, alreadyTaken:false})
-        }else{
+        }
+        else if(this.state.url === 'privacy_policy'){
+            
+            this.setState({urlEmpty: false, alreadyTaken:true})
+
+        }
+        else{
             this.setState({urlEmpty: false, loading: true});
             services.get(this.state.url).then(
                 (response)=>{
@@ -71,7 +78,7 @@ import ReactLoading from 'react-loading';
                 <h2 className="headers">Text-Sharer</h2>
                 <p className="para">Free Online Text Sharing App without login and no long URLs.</p>
                 <form className="form">
-                    <label className="url-label">Custom URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="->example01" required="true" /><br></br>
+                    <label className="url-label">Custom URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="example01" required="true" /><br></br>
                     {
                         this.state.hasSlash? <label className="error-label">'/' are not allowed in the URL.</label> : ''
                     }
@@ -97,6 +104,7 @@ import ReactLoading from 'react-loading';
                         https://text-sharer.netlify.com/&lt;your-url&gt;
                     </ol>
                 </div>
+                <Footer></Footer>
             </div>
          );
      }

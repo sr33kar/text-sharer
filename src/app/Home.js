@@ -2,7 +2,7 @@ import react, { Component } from 'react';
 import HomePage from './HomPage';
 import TextPage from './TextPage';
 import './style.css';
-
+import Privacy_policy from './Privacy_policy';
 class Home extends Component{
     constructor(props){
         super(props);
@@ -14,6 +14,13 @@ class Home extends Component{
         const urlIndex =3;
         if(url.length===4 && url[url.length-1].length!==0 || url.length===5 && url[url.length-1].length===0){
             url = url[urlIndex];
+            if(url==='privacy_policy'){
+                return (
+                    <div className="privacy_policy">
+                        <Privacy_policy></Privacy_policy>
+                    </div>
+                );
+            }
             return (
                 <div className="Home">
                     <TextPage className="Home" url={url} />
