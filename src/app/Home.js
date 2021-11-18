@@ -16,7 +16,7 @@ class Home extends Component{
             url = url[urlIndex];
             if(url==='privacy_policy'){
                 return (
-                    <div className="privacy_policy">
+                    <div className="Home">
                         <Privacy_policy></Privacy_policy>
                     </div>
                 );

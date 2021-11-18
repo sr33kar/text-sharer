@@ -5,8 +5,8 @@ class Footer extends Component{
     render(){
         return (
         <div className="footer">
-            <a className="logo" href="https://sreekar.netlify.app/"><img src={logo1} width="100px"></img></a><br></br>
-            <a href="https://text-sharer.netlify.com/privacy_policy" className="link">Privacy Policy</a>
+            <a className="logo" href="https://sreekar.netlify.app/"  target="_blank"><img src={logo1} width="100px"></img></a><br></br>
+            <a href="http://localhost:3000/privacy_policy"  target="_blank" className="link">Privacy Policy</a>
         </div>
         );
     }
