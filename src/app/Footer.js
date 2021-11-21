@@ -4,10 +4,13 @@ import logo1 from '../app/assets/icon_1.png'
 class Footer extends Component{
     render(){
         return (
-        <div className="footer">
-            <a className="logo" href="https://sreekar.netlify.app/"  target="_blank"><img src={logo1} width="100px"></img></a><br></br>
-            <a href="http://localhost:3000/privacy_policy"  target="_blank" className="link">Privacy Policy</a>
-        </div>
+            <div>
+                <div className="footer">
+                    <h3>About Me: </h3>
+                    <a className="logo" href="https://sreekar.netlify.app/"  target="_blank"><img src={logo1} width="100px"></img></a><br></br>
+                    <a href="http://localhost:3000/privacy_policy"  target="_blank" className="link">Privacy Policy</a>
+                </div>
+            </div>
         );
     }
 }

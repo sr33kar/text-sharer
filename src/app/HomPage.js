@@ -4,6 +4,10 @@ import services from '../services/services';
 import { Button,Modal} from 'react-bootstrap';
 import ReactLoading from 'react-loading';
 import Footer  from './Footer';
+import Header from './Header';
+import ContactMe from './ContactMe';
+import image1 from '../app/assets/3885.png';
+import textSharerLogo from '../app/assets/text-sharer-logo.png'
  class HomePage extends Component{
      constructor(props){
          super(props);
@@ -74,8 +78,8 @@ import Footer  from './Footer';
      render() {
          return (
             <div className="homePage">
-                
-                <h2 className="headers">Text-Sharer</h2>
+            <Header />
+                <img src={textSharerLogo} className="text-sharer-logo"></img>
                 <p className="para">Free Online Text Sharing App without login and no long URLs.</p>
                 <form className="form">
                     <label className="url-label">Custom URL: text-sharer.netlify.com/</label><input type="text" className="url-input" value={this.state.url} onChange={this.handleOnChangeUrl} placeholder="example01" required="true" /><br></br>
@@ -95,15 +99,20 @@ import Footer  from './Footer';
                    
                 </form>
                 <br></br>
-                <div className="guide">
-                    <h4>How to Use:</h4>
-                    <ol>
-                        <li>Enter the data you wish to share in the textbox.</li>
-                        <li>Enter the URL you wish to have, replace "example" with "your-url".</li>
-                        <li>Press submit and share the url:</li>
-                        https://text-sharer.netlify.com/&lt;your-url&gt;
-                    </ol>
+                <div className="guide" id="guide">
+                <br></br><br></br><br></br><br></br>
+                    <img className="image1" src={image1}></img>
+                    <div className="howToUse">
+                        <h4>How to Use:</h4>
+                        <ul>
+                            <li>Enter the data you wish to share in the textbox.</li>
+                            <li>Enter the URL you wish to have, replace "example" with "your-url".</li>
+                            <li>Press submit and share the url:</li>
+                            https://text-sharer.netlify.com/&lt;your-url&gt;
+                        </ul>
+                    </div>
                 </div>
+                <ContactMe className="contact-me" id="contact-me" />
                 <Footer></Footer>
             </div>
          );
