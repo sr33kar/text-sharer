@@ -3,6 +3,11 @@ import copyImage from "./assets/copy.png";
 import services from '../services/services';
 import { Button,Modal} from 'react-bootstrap';
 import ReactLoading from 'react-loading';
+import Footer  from './Footer';
+import Header from './Header';
+import ContactMe from './ContactMe';
+import image1 from '../app/assets/3885.png';
+import textSharerLogo from '../app/assets/text-sharer-logo.png'
  class TextPage extends Component{
      constructor(props){
          super(props);
@@ -78,8 +83,9 @@ import ReactLoading from 'react-loading';
 
      render() {
          return (
-            <div>
-                <h2 className="headers">Text-Sharer</h2>
+            <div className="textPage">
+            <Header />
+                <img src={textSharerLogo} className="text-sharer-logo"></img>
                 <form className="form">
                     <label className="url-label">Custom URL: text-sharer.netlify.com/{this.props.url}</label>
                     <div className="icon" onClick={() => {this.copyURLToClipboard(); this.setState({urlCopied: true, dataCopied:false})}}>
@@ -95,6 +101,22 @@ import ReactLoading from 'react-loading';
                     </button>&nbsp;
                     <button className="button" onClick={this.onSubmit} disabled={this.state.loading}>{this.state.loading? <ReactLoading type="bubbles" color="black" height={'30px'} width={'50px'} />: 'Update!'}</button> <button className="deleteButton" onClick={this.onDelete} disabled={this.state.deleting}>{this.state.deleting? <ReactLoading type="bubbles" color="black" />: 'Delete me!'}</button>
                 </form>
+                <br></br>
+                <div className="guide" id="guide">
+                <br></br><br></br><br></br><br></br>
+                    <img className="image1" src={image1}></img>
+                    <div className="howToUse">
+                        <h4>How to Use:</h4>
+                        <ul>
+                            <li>Enter the data you wish to share in the textbox.</li>
+                            <li>Enter the URL you wish to have, replace "example" with "your-url".</li>
+                            <li>Press submit and share the url:</li>
+                            https://text-sharer.netlify.com/&lt;your-url&gt;
+                        </ul>
+                    </div>
+                </div>
+                <ContactMe className="contact-me" id="contact-me" />
+                <Footer></Footer>
             </div>
          );
      }
