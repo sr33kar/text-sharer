@@ -1,6 +1,6 @@
 import react, { Component } from 'react';
-import HomePage from './HomPage';
-import TextPage from './TextPage';
+import HomePage from './HomPage.js';
+import TextPage from './TextPage.js';
 import './style.css';
 import Privacy_policy from './Privacy_policy';
 class Home extends Component{

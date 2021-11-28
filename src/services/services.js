@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "../http-common.js";
 class textDataService{
     getAll() {
         return http.get("/texts");
