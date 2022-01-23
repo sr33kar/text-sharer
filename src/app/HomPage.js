@@ -7,21 +7,26 @@ import Footer  from './Footer';
 import Header from './Header';
 import ContactMe from './ContactMe';
 import image1 from '../app/assets/3885.png';
-import textSharerLogo from '../app/assets/text-sharer-logo.png'
+import textSharerLogo from '../app/assets/text-sharer-logo.png';
+import * as CryptoJS from 'crypto-js';
  class HomePage extends Component{
      constructor(props){
          super(props);
          this.state = {
              url: "",
              data: "",
+             password: "",
              alreadyTaken: false,
              urlEmpty: false,
              loading: false,
-             hasSlash: false
+             hasSlash: false,
+             showPassword: false 
          };
          this.handleOnChangeTextarea = this.handleOnChangeTextarea.bind(this);
          this.handleOnChangeUrl = this.handleOnChangeUrl.bind(this);
          this.onSubmit = this.onSubmit.bind(this);
+         this.handleOnChangePassword = this.handleOnChangePassword.bind(this);
+         this.toggleShowPassword = this.toggleShowPassword.bind(this);
      }
      handleAlreadyTakenModal(){  
         this.setState({alreadyTaken:!this.state.alreadyTaken})  
@@ -33,6 +38,11 @@ import textSharerLogo from '../app/assets/text-sharer-logo.png'
          this.setState({
              data: e.target.value
          });
+         var encrypted =CryptoJS.AES.encrypt(e.target.value, 'my-secret-key@123').toString() 
+         console.log(encrypted);
+         var middle = CryptoJS.AES.decrypt(encrypted, 'my-secret-key@123');
+         console.log(middle);
+         console.log(middle.toString(CryptoJS.enc.Utf8))
      }
      handleOnChangeUrl = (e) =>{
          if(e.target.value.includes('/')){
@@ -46,6 +56,9 @@ import textSharerLogo from '../app/assets/text-sharer-logo.png'
          });
          
      }
+     handleOnChangePassword= (e) =>{
+        this.setState({password: e.target.value});
+     }
      onSubmit = (e) =>{
         e.preventDefault();
         if(this.state.url.length === 0){
@@ -58,6 +71,10 @@ import textSharerLogo from '../app/assets/text-sharer-logo.png'
         }
         else{
             this.setState({urlEmpty: false, loading: true});
+            if(this.state.password.length!==0){
+                var encrypted =CryptoJS.AES.encrypt(this.state.data, this.state.password).toString();
+                this.setState({data: encrypted});
+            }
             services.get(this.state.url).then(
                 (response)=>{
                 console.log(response);
@@ -74,6 +91,9 @@ import textSharerLogo from '../app/assets/text-sharer-logo.png'
                 }
             );
         }
+     }
+     toggleShowPassword(){
+        this.setState({showPassword: !this.state.showPassword});
      }
      render() {
          return (
@@ -94,6 +114,8 @@ import textSharerLogo from '../app/assets/text-sharer-logo.png'
                         <Modal.Header closeButton>Empty URL</Modal.Header>  
                         <Modal.Body>Please enter the custom URL.</Modal.Body>  
                     </Modal>
+                    Password: <input type={this.state.showPassword? "text": "password"} className='password-input' placeholder="Password" id="myInput" value={this.state.password} onChange={this.handleOnChangePassword}/><br></br>
+                    <input type="checkbox" onChange={this.toggleShowPassword} className='checkbox' />  Show Password
                     <br></br><textarea className="textbox" value={this.state.data} onChange={this.handleOnChangeTextarea} placeholder="Copy your text here!!" ></textarea><br></br>
                     <button className="button" onClick={this.onSubmit} disabled={this.state.loading || this.state.hasSlash}>{this.state.loading? <ReactLoading type="bubbles" color="black" />: 'Submit!'}</button>
                    

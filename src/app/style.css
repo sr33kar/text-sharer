@@ -9,7 +9,7 @@
   src: url("./fonts/SITKA.TTC");
 }
 .Home{
-    padding-top: 10vh;
+    padding-top: 8vh;
     background-color: rgb(160, 145, 245);
     width: 100vw;
     color: white;
@@ -17,7 +17,7 @@
     background-color: #3a3b3a;
   }
 
-  .url-label, .url-input,.error-label, .text-label, .textbox, p {
+  .url-label, .url-input,.error-label, .text-label, .textbox, p, .password-input, .checkbox {
     margin-top: 20px;
     font-size: large;
     font-family: open-sans, sans-serif;
@@ -34,7 +34,7 @@
     border-style: solid;
     border-radius: 5px;
   }
-  .url-input{
+  .url-input, .password-input, .checkbox{
     background-color: inherit;
     border-color: white;
     border-top: none;
@@ -56,7 +56,7 @@
     color: white;
     opacity: 0.5; /* Firefox */
   }
-  .url-input:focus, .textbox:focus{
+  .url-input:focus, .textbox:focus, .password-input:focus, .checkbox{
     outline: none;
   }
 
@@ -71,7 +71,7 @@ textarea::placeholder{
   color: black;
 }
 .text-sharer-logo{
-  width: 20vw;
+  width: 15vw;
 }
 .button, .deleteButton{
   padding: 10px 20px 10px 20px;
@@ -100,7 +100,9 @@ img{
   display: inline;
 }
 
-
+.disclaimer{
+  color: rgb(49, 194, 49);
+}
 .guide{
   text-align: left;
   color: black;
@@ -366,7 +368,7 @@ label.fcf-label {
 
 @media screen and (max-width: 480px) {
   .Home, .homePage{
-    padding-top: 3vh;
+    padding-top: 1vh;
     width: 100%;
     transform: translateX(-0.5%);
   }
