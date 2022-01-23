@@ -66,16 +66,16 @@ import * as CryptoJS from 'crypto-js';
         }
         else{
             this.setState({urlEmpty: false, loading: true});
-            if(this.state.password.length!==0){
-                var encrypted =CryptoJS.AES.encrypt(this.state.data, this.state.password).toString();
-                this.setState({data: encrypted});
-            }
             services.get(this.state.url).then(
                 (response)=>{
                     if(response.data && response.data._id.length > 0){
                         this.setState({alreadyTaken: true, loading: false});
                     }
                     else{
+                        if(this.state.password.length!==0){
+                            var encrypted =CryptoJS.AES.encrypt(this.state.data, this.state.password).toString();
+                            this.setState({data: encrypted});
+                        }
                         services.create(this.state).then(
                             (response) =>{
                                 window.location.href = window.location.href + this.state.url;
