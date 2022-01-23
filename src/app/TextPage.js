@@ -119,7 +119,7 @@ import * as CryptoJS from 'crypto-js';
                     </div>
                     <br></br>
                     <br></br>
-                    <label className='disclaimer'>It's password encrypted. You have to type in password correctly to see it.</label><br></br>Password: <input type={this.state.showPassword? "text": "password"} className='password-input' placeholder="Password" id="myInput" value={this.state.password} onChange={this.handleOnChangePassword}/>
+                    <label className='disclaimer'>It's password encrypted. You have to type in password correctly to see it, and make sure password is correct before updating.</label><br></br>Password: <input type={this.state.showPassword? "text": "password"} className='password-input' placeholder="Password" id="myInput" value={this.state.password} onChange={this.handleOnChangePassword}/>
                     <br></br>
                     <input type="checkbox" onChange={this.toggleShowPassword} className='checkbox' />  Show Password<br></br>
                     <textarea className="textbox" value={this.state.data} onChange={this.handleOnChangeTextarea} placeholder="Copy your text here!!" ></textarea><br></br>
