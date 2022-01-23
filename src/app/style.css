@@ -71,6 +71,7 @@ textarea::placeholder{
   color: black;
 }
 .text-sharer-logo{
+  display: none;
   width: 15vw;
 }
 .button, .deleteButton{
@@ -139,8 +140,12 @@ input{
 .link{
   color: white;
 }
+ .header-logo{
+   position: absolute;
+   top: 30px;
+ }
  .logo{
-   width:200px;
+   width: 200px;
  }
 
  .privacy_policy{
@@ -371,6 +376,7 @@ label.fcf-label {
     padding-top: 1vh;
     width: 100%;
     transform: translateX(-0.5%);
+    font-size: small;
   }
   .header{
     display: none;
@@ -384,6 +390,7 @@ label.fcf-label {
     font-size: 0.9em;
   }
   .text-sharer-logo{
+    display: inline-block;
     width: 50vw;
   }
 }

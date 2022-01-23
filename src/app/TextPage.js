@@ -18,9 +18,9 @@ import * as CryptoJS from 'crypto-js';
          super(props);
          this.state = {
             url: this.props.url,
-            originalData:"",
             data: "",
             password: "",
+            originalData: "",
             urlCopied:false,
             dataCopied:false,
             loading: false,
@@ -51,8 +51,12 @@ import * as CryptoJS from 'crypto-js';
     
     onSubmit = (e) =>{
         e.preventDefault();
-        this.setState({loading: true});
-        services.update(this.state).then(
+        var encrypted = this.state.data;
+        if(this.state.password.length!=0){
+            encrypted =CryptoJS.AES.encrypt(this.state.data, this.state.password).toString();
+        }
+        this.setState({data: encrypted});
+        services.update({url: this.state.url, data: encrypted}).then(
             (res)=>{
                 this.setState({loading: false});
                 if(res.status === 200){
@@ -95,11 +99,9 @@ import * as CryptoJS from 'crypto-js';
       handleOnChangePassword= (e) =>{
         try{
             var middle = CryptoJS.AES.decrypt(this.state.originalData, e.target.value);
-            console.log(middle);
             this.setState({password: e.target.value, data: middle.toString(CryptoJS.enc.Utf8)});
          } catch(err){
             this.setState({password: e.target.value});
-             console.log(err);
          }
      }
      toggleShowPassword = () =>{
@@ -125,7 +127,8 @@ import * as CryptoJS from 'crypto-js';
                     <button className="button" onClick={(e) => {e.preventDefault();this.copyDataToClipboard(); this.setState({dataCopied: true, urlCopied:false})}}>
                         <img src={copyImage} width="10px" /> {this.state.dataCopied? "Copied!": 'Copy!'}
                     </button>&nbsp;
-                    <button className="button" onClick={this.onSubmit} disabled={this.state.loading}>{this.state.loading? <ReactLoading type="bubbles" color="black" height={'30px'} width={'50px'} />: 'Update!'}</button> <button className="deleteButton" onClick={this.onDelete} disabled={this.state.deleting}>{this.state.deleting? <ReactLoading type="bubbles" color="black" />: 'Delete me!'}</button>
+                    <button className="button" onClick={this.onSubmit} disabled={this.state.loading}>{this.state.loading? <ReactLoading type="bubbles" color="black" height={'30px'} width={'50px'} />: 'Update!'}</button> 
+                    <button className="deleteButton" onClick={this.onDelete} disabled={this.state.deleting}>{this.state.deleting? <ReactLoading type="bubbles" color="black" />: 'Delete me!'}</button>
                 </form>
                 <br></br>
                 <div className="guide" id="guide">

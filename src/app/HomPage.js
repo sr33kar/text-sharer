@@ -38,11 +38,6 @@ import * as CryptoJS from 'crypto-js';
          this.setState({
              data: e.target.value
          });
-         var encrypted =CryptoJS.AES.encrypt(e.target.value, 'my-secret-key@123').toString() 
-         console.log(encrypted);
-         var middle = CryptoJS.AES.decrypt(encrypted, 'my-secret-key@123');
-         console.log(middle);
-         console.log(middle.toString(CryptoJS.enc.Utf8))
      }
      handleOnChangeUrl = (e) =>{
          if(e.target.value.includes('/')){
@@ -77,7 +72,6 @@ import * as CryptoJS from 'crypto-js';
             }
             services.get(this.state.url).then(
                 (response)=>{
-                console.log(response);
                     if(response.data && response.data._id.length > 0){
                         this.setState({alreadyTaken: true, loading: false});
                     }

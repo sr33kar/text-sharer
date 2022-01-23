@@ -19,7 +19,7 @@ class Header extends Component{
         
         return (
         <div className="header">
-            <a className="logo" href="http://text-sharer.netlify.com/"  target="_blank"><img src={textSharerLogo} width="100px"></img></a>
+            <a className="header-logo" href="http://text-sharer.netlify.com/"  target="_blank"><img src={textSharerLogo} width="200px"></img></a>
             <button className="nav-links" onClick={this.scrollMore}>Contact Us</button>
             <button className="nav-links" onClick={this.scrollTo}>How to use?</button>
         </div>
