@@ -72,11 +72,11 @@ import * as CryptoJS from 'crypto-js';
                         this.setState({alreadyTaken: true, loading: false});
                     }
                     else{
+                        var encrypted = this.state.data;
                         if(this.state.password.length!==0){
-                            var encrypted =CryptoJS.AES.encrypt(this.state.data, this.state.password).toString();
-                            this.setState({data: encrypted});
+                            encrypted =CryptoJS.AES.encrypt(this.state.data, this.state.password).toString();
                         }
-                        services.create(this.state).then(
+                        services.create({url: this.state.url, data: encrypted}).then(
                             (response) =>{
                                 window.location.href = window.location.href + this.state.url;
                             }
